@@ -12,7 +12,159 @@
 
 /* Sections style */
 @import url('./header.css');
-@import url('./vite-promo.css');
 @import url('./badges.css');
 @import url('./back-link.css');
-@import url('./footer.css');
+
+ul,
+ol {
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-left: 0;
+    list-style-type: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+    margin: 0;
+}
+
+ul,
+ol {
+    margin: 0;
+    padding: 0;
+}
+
+img {
+    display: block;
+}
+
+button {
+    cursor: pointer;
+}
+
+
+
+.div{ 
+  font-family: "Montserrat", sans-serif;
+    font-weight: 400;
+    font-size: 50px;
+    line-height: 3;
+    letter-spacing: 0.04em;
+    color: #2e2f42;
+    
+} 
+
+
+.main{
+  height: 200px;
+  flex-grow: 0;}
+
+.gallery {background-color: #111;
+    width: 1440px;
+    height: 696px;
+    background: #fff;
+    padding-left: 156px;
+    padding-right: 156px;
+    padding-top: 24px;
+    padding-bottom: 24px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 24px;
+    justify-content: center
+  }
+
+.gallery-image {
+    width: 360px;
+    height: 200px;
+    object-fit: cover;
+}
+
+
+.cont_form{
+    display: flex;
+    background: #4e75ff;
+    border-radius: 8px;
+    color: #ffff;
+    margin: auto;
+    margin-top: 50px;
+    width: 295px;
+    height: 40px;
+    justify-content: space-evenly;
+}
+
+.feedback_form{display: flex;
+    flex-direction: column;
+ 
+    border-radius: 8px;
+   padding-bottom: 24px;
+   padding-left: 24px;
+   padding-right: 24px;
+   padding-top: 16px;
+    width: 360px;
+    height: 192px;
+    background-color: #ffff;
+}   
+
+.feedback_div{
+    display: flex;
+    justify-content: center;
+    margin-top: 200px;
+}
+
+.feedback_label{
+    display: flex;
+    flex-direction: column;
+    padding-top: 8px;
+    align-items: flex-start;
+}
+.feedback_message{
+    height: 80px;
+}
+
+
+.feedback_button{
+    margin-top: 16px;
+    border-radius: 8px;
+    padding: 8px;
+    width: 95px;
+    height: 40px;
+    background: #4e75ff;
+    border: none;
+    color: #ffff;
+    font-weight: 500;
+   
+    letter-spacing: 0.12em;
+    }   
+
+
+.timer {
+    display: flex;
+    gap: 10px;
+}
+
+.field {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.value {
+    font-size: 24px;
+    font-weight: bold;
+}
+    
+.timer_1{margin-left: auto;
+    margin-right: auto;
+    margin-top: 100px;
+}
+

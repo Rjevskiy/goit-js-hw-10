@@ -3,17 +3,22 @@
 }
 .nav {
   display: flex;
-  justify-content: space-between;
+  margin-top: 500px;
+  justify-content: center;
 }
 .nav-logo {
   display: inline-flex;
   align-items: center;
   justify-content: center;
 }
-.nav-list {
+.nav-list {background-color: #747bff;
   display: flex;
+  border-radius: 8px;
+  color: #fff;
   align-items: center;
   justify-content: flex-end;
+  
+  padding: 18px;
   gap: 40px;
 }
 .nav-link {
