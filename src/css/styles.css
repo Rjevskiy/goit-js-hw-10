@@ -168,3 +168,27 @@ button {
     margin-top: 100px;
 }
 
+.form {
+    margin: 20px;
+}
+
+.form label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+.snackbar_2{display: flex;
+    justify-content: center;
+    margin-top: 100px;
+}
+
+.fieldset{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.button{
+    
+}
+

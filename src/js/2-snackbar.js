@@ -1,54 +1,53 @@
+import iziToast from "izitoast"; 
+import "izitoast/dist/css/iziToast.min.css"; 
 
-const formData = {
-    email: "",
-    message: ""
-};
+const form = document.querySelector('.form');
 
-
-const form = document.querySelector('.feedback_form');
-const emailInput = document.querySelector('input[name="email"]');
-const messageInput = document.querySelector('textarea[name="message"]');
-
-
-window.addEventListener('load', () => {
-    const savedData = localStorage.getItem('feedback-form-state');
-    if (savedData) {
-        const { email, message } = JSON.parse(savedData);
-        formData.email = email;
-        formData.message = message;
-
-        emailInput.value = email;
-        messageInput.value = message;
-    }
-});
-
-
-form.addEventListener('input', (event) => {
-    const { name, value } = event.target;
-    formData[name] = value.trim();  
-
-   
-    localStorage.setItem('feedback-form-state', JSON.stringify(formData));
-});
-
+// кнопка 
+const submitButton = form.querySelector('button[type="submit"]'); 
 
 form.addEventListener('submit', (event) => {
     event.preventDefault(); 
 
+    const delay = parseInt(form.delay.value); 
+    const state = form.state.value; 
+
+       // кнопка  неактивна
+    submitButton.disabled = true; 
     
-    if (!formData.email || !formData.message) {
-        alert('Please fill out all fields');
-        return;
-    }
-
-  
-    console.log('Submitted data:', formData);
-
-   
-    localStorage.removeItem('feedback-form-state');
-    form.reset();
+    const promise = new Promise((resolve, reject) => {
+        setTimeout(() => {
+            if (state === "fulfilled") {
+                resolve(delay);
+            } else {
+                reject(delay);
+            }
+        }, delay);
+    });
 
     
-    formData.email = "";
-    formData.message = "";
+    promise
+        .then(delay => {
+            iziToast.success({
+                title: 'Успех!',
+                message: `✅ Fulfilled promise in ${delay}ms`,
+                position: 'topRight'
+            });
+        })
+        .catch(delay => {
+            iziToast.error({
+                title: 'Ошибка!',
+                message: `❌ Rejected promise in ${delay}ms`,
+                position: 'topRight'
+            });
+        })
+    
+           // Разблокируем кнопку
+        .finally(() => { 
+            submitButton.disabled = false;
+        });
+       
+console.log('Задержка:', delay); 
+console.log('Состояние:', state); 
+        
 });

@@ -1,37 +1,45 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Form</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Генератор обещаний</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/izitoast/1.4.0/css/iziToast.min.css">
   <link rel="stylesheet" href="./css/styles.css" />
+
 </head>
 
 <body>
+  <div class="container">
+    <a class="back-link" href="./index.html">Go back</a>
+    <h1 class="main-title">Timer</h1>
+  </div>
 
+  <div class="snackbar_2">
+    <form class="form">
+      <label>
+        Delay (ms)
+        <input type="number" name="delay" required />
+      </label>
 
-  <main>
-    <div class="container">
-      <a class="back-link" href="./index.html">Go back</a>
-      <h1 class="main-title">Form</h1>
-    </div>
+      <fieldset class="fieldset">
+        <legend>State</legend>
+        <label>
+          <input type="radio" name="state" value="fulfilled" required />
+          Fulfilled
+        </label>
+        <label>
+          <input type="radio" name="state" value="rejected" required />
+          Rejected
+        </label>
+      </fieldset>
 
-    <div class="feedback_div">
-      <form class="feedback_form">
-        <label class="feedback_label" for="email">Email</label>
-        <input type="email" name="email" id="email" required>
+      <button type="submit">Create notification</button>
+    </form>
+  </div>
 
-        <label class="feedback_label" for="message">Message</label>
-        <textarea class="feedback_message" name="message" id="message" required></textarea>
-
-        <button class="feedback_button" type="submit">Submit</button>
-      </form>
-    </div>
-  </main>
-
-
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/izitoast/1.4.0/js/iziToast.min.js"></script>
   <script type="module" src="./js/2-snackbar.js"></script>
 </body>
 
