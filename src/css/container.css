@@ -1,6 +1,8 @@
 /* Styles for Mobile devices */
 .container {
- 
+ display: flex;
+flex-direction: column;
+align-items: center;
   max-width: 375px;
   margin: 0 auto;
   padding: 0 16px;
