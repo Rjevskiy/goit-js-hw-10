@@ -1,9 +1,14 @@
-import flatpickr from "flatpickr"; 
-import "flatpickr/dist/flatpickr.min.css"; 
-import iziToast from "izitoast"; 
-import "izitoast/dist/css/iziToast.min.css"; 
+import flatpickr from "flatpickr";
+import "flatpickr/dist/flatpickr.min.css";
+import iziToast from "izitoast";
+import "izitoast/dist/css/iziToast.min.css";
 
-// Настройка flatpickr
+//  input и кнопки
+const input = document.getElementById("datetime-picker");
+const startButton = document.querySelector("[data-start]");
+startButton.disabled = true; 
+
+//  flatpickr
 const options = {
     enableTime: true,
     time_24hr: true,
@@ -13,40 +18,38 @@ const options = {
         const userSelectedDate = selectedDates[0];
         console.log('Выбранная дата:', userSelectedDate); 
 
+        // Проверяем, выбрана ли прошедшая дата
         if (userSelectedDate < new Date()) {
             iziToast.error({
                 title: "Ошибка",
                 message: "Пожалуйста, выберите дату в будущем",
             });
-            startButton.disabled = true;
-            input.disabled = true;
+          // кнопка Start неактивна
+            startButton.disabled = true; 
         } else {
-            startButton.disabled = false;
-            input.disabled = false;
+          // кнопка Start активна
+          startButton.disabled = false; 
+          // input активный
+            input.disabled = false;       
         }
     },
 };
 
-const input = document.getElementById("datetime-picker");
 flatpickr("#datetime-picker", options);
 
-// Логика таймера
-const startButton = document.querySelector("[data-start]");
-startButton.disabled = true; // Кнопка "Start" неактивна вначале
-
-// Идентификатор таймера и статус
+// таймер
 let timerId = null;
 let isTimerActive = false;
 
-// Обработчик кнопки Start
+// кнопка Start
 startButton.addEventListener("click", () => {
-    // Если таймер уже активен, ничего не делаем
+    // таймер активен
     if (isTimerActive) return;
 
     const countdownDate = new Date(input.value).getTime();
     console.log('Время отсчета:', countdownDate);
 
-    // Устанавливаем флаг, кнопка Start неактивна
+    
     isTimerActive = true;
     startButton.disabled = true;
     input.disabled = true;
@@ -58,25 +61,26 @@ startButton.addEventListener("click", () => {
 
         console.log('Оставшееся время:', timeLeft);
 
-        // Если таймер закончился
+        // таймер закончился
         if (timeLeft <= 0) {
             clearInterval(timerId);
             isTimerActive = false;
             input.disabled = false;
 
             console.log('Таймер закончился');
-            
+
+            // Сброс  таймера 
             document.querySelector("[data-days]").textContent = "00";
             document.querySelector("[data-hours]").textContent = "00";
             document.querySelector("[data-minutes]").textContent = "00";
             document.querySelector("[data-seconds]").textContent = "00";
 
-            // кнопки Start активна
+            // Start активна
             startButton.disabled = false;
             return;
         }
 
-        // отображение времени
+        //  оставшеся время
         const { days, hours, minutes, seconds } = convertMs(timeLeft);
         document.querySelector("[data-days]").textContent = addLeadingZero(days);
         document.querySelector("[data-hours]").textContent = addLeadingZero(hours);
@@ -85,7 +89,7 @@ startButton.addEventListener("click", () => {
     }, 1000);
 });
 
-// Функция часов
+// конвертации времени
 function convertMs(ms) {
     const second = 1000;
     const minute = second * 60;
